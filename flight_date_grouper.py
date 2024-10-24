@@ -2,7 +2,7 @@ import json
 from datetime import datetime, timedelta
 
 # Step 1: Load the JSON file
-with open('airport_flight_data_sorted.json', 'r') as f:
+with open('missing_weather_data.json', 'r') as f:
     airport_flight_data = json.load(f)
 
 # Step 2: Define a function to group consecutive dates
@@ -42,14 +42,14 @@ def group_dates(dates_list):
 
 # Step 3: Group the dates for each airport code
 for airport_code, info in airport_flight_data.items():
-    grouped_date_ranges = group_dates(info['dates'])
+    grouped_date_ranges = group_dates(info['missing_dates'])
     # Replace the 'dates' list with grouped date ranges
     info['date_ranges'] = grouped_date_ranges
     # Remove the original 'dates' key
-    del info['dates']
+    del info['missing_dates']
 
 # Step 4: Save the updated JSON with grouped date ranges
-with open('airport_flight_data_grouped.json', 'w') as f:
+with open('missing_weather_data_grouped.json', 'w') as f:
     json.dump(airport_flight_data, f, indent=4)
 
-print("Dates have been grouped into consecutive ranges and saved in 'airport_flight_data_grouped.json'.")
+print("Dates have been grouped into consecutive ranges and saved in 'missing_weather_data_grouped.json'.")

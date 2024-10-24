@@ -3,9 +3,10 @@ import pandas as pd
 import requests
 from dask import delayed
 import json
+import time
 
 # Step 1: Load the grouped dates JSON file with latitude and longitude
-with open('airport_flight_data_grouped.json', 'r') as f:
+with open('missing_weather_data_grouped.json', 'r') as f:
     flight_dates_json = json.load(f)
 
 # Step 2: Define the API query function for Open-Meteo
@@ -39,7 +40,10 @@ def process_airport_weather(airport_code, lat, lon, date_ranges):
         start_date = date_range['start_date']
         end_date = date_range['end_date']
         print(f"Fetching weather data for {airport_code} ({lat}, {lon}) from {start_date} to {end_date}...")
-        
+
+        # Add delay between requests to avoid hitting API limits
+        time.sleep(0.5)  # Pause for 2 seconds between each request
+
         # Fetch weather data for the current date range
         weather_data = fetch_weather_data(lat, lon, start_date, end_date)
         
@@ -88,6 +92,6 @@ weather_data_list = [item for sublist in results for item in sublist]  # Flatten
 weather_df = pd.DataFrame(weather_data_list)
 
 # Step 8: Save the weather data to a CSV file
-output_file_path = 'airport_weather_data_dask_grouped.csv'
+output_file_path = 'weather_data_1.csv'
 weather_df.to_csv(output_file_path, index=False)
 print(f"Weather data saved to {output_file_path}")
