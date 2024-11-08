@@ -18,7 +18,6 @@ def fetch_weather_data(lat, lon, start_date, end_date):
         'start_date': start_date,
         'end_date': end_date,
         'hourly': 'temperature_2m,relative_humidity_2m,dew_point_2m,precipitation,snow_depth,pressure_msl,surface_pressure,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m',
-        'daily': 'daylight_duration,precipitation_sum,snowfall_sum,wind_speed_10m_max',
         'timezone': 'America/Los_Angeles'  # Adjust based on your region
     }
     
@@ -42,7 +41,7 @@ def process_airport_weather(airport_code, lat, lon, date_ranges):
         print(f"Fetching weather data for {airport_code} ({lat}, {lon}) from {start_date} to {end_date}...")
 
         # Add delay between requests to avoid hitting API limits
-        time.sleep(0.5)  # Pause for 2 seconds between each request
+        time.sleep(45)  # Pause for 30 seconds between each request
 
         # Fetch weather data for the current date range
         weather_data = fetch_weather_data(lat, lon, start_date, end_date)

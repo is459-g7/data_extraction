@@ -1,31 +1,11 @@
 {
-    "ABQ": {
-        "latitude": 35.0402,
-        "longitude": -106.6091,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "ACV": {
-        "latitude": 40.9781,
-        "longitude": -124.1086,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1988-01-05"
-            }
-        ]
-    },
     "ANC": {
         "latitude": 61.1743,
         "longitude": -149.9982,
         "date_ranges": [
             {
-                "start_date": "1988-06-06",
-                "end_date": "1988-08-26"
+                "start_date": "1991-05-26",
+                "end_date": "1991-05-26"
             }
         ]
     },
@@ -34,18 +14,8 @@
         "longitude": -106.8688,
         "date_ranges": [
             {
-                "start_date": "2006-06-09",
-                "end_date": "2006-06-09"
-            }
-        ]
-    },
-    "ATL": {
-        "latitude": 33.6407,
-        "longitude": -84.4277,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
+                "start_date": "2006-07-28",
+                "end_date": "2006-07-28"
             }
         ]
     },
@@ -54,8 +24,8 @@
         "longitude": -97.6699,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1988-01-03"
+                "start_date": "1988-07-05",
+                "end_date": "1988-08-06"
             }
         ]
     },
@@ -64,68 +34,8 @@
         "longitude": -72.6832,
         "date_ranges": [
             {
-                "start_date": "1988-01-31",
-                "end_date": "1988-02-11"
-            }
-        ]
-    },
-    "BFL": {
-        "latitude": 35.4336,
-        "longitude": -119.0568,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-30"
-            }
-        ]
-    },
-    "BIL": {
-        "latitude": 45.8077,
-        "longitude": -108.537,
-        "date_ranges": [
-            {
-                "start_date": "2007-06-09",
-                "end_date": "2007-06-09"
-            }
-        ]
-    },
-    "BNA": {
-        "latitude": 36.1245,
-        "longitude": -86.6782,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-23"
-            }
-        ]
-    },
-    "BOS": {
-        "latitude": 42.3656,
-        "longitude": -71.0096,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "BUR": {
-        "latitude": 34.2006,
-        "longitude": -118.3585,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "BWI": {
-        "latitude": 39.1754,
-        "longitude": -76.6684,
-        "date_ranges": [
-            {
-                "start_date": "1988-03-01",
-                "end_date": "1988-03-10"
+                "start_date": "2005-10-18",
+                "end_date": "2005-10-21"
             }
         ]
     },
@@ -134,68 +44,8 @@
         "longitude": -111.1606,
         "date_ranges": [
             {
-                "start_date": "2007-06-09",
-                "end_date": "2007-06-09"
-            }
-        ]
-    },
-    "CCR": {
-        "latitude": 37.9891,
-        "longitude": -122.0569,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1991-03-02"
-            }
-        ]
-    },
-    "CEC": {
-        "latitude": 41.7802,
-        "longitude": -124.2365,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2003-11-29"
-            }
-        ]
-    },
-    "CIC": {
-        "latitude": 39.7954,
-        "longitude": -121.8584,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2008-07-08"
-            }
-        ]
-    },
-    "CLD": {
-        "latitude": 33.0747,
-        "longitude": -117.2792,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2008-07-08"
-            }
-        ]
-    },
-    "CLE": {
-        "latitude": 41.4117,
-        "longitude": -81.8498,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1992-04-23"
-            }
-        ]
-    },
-    "CLT": {
-        "latitude": 35.214,
-        "longitude": -80.9431,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1988-05-30"
+                "start_date": "2008-01-19",
+                "end_date": "2008-01-19"
             }
         ]
     },
@@ -204,38 +54,8 @@
         "longitude": -82.8919,
         "date_ranges": [
             {
-                "start_date": "1990-06-15",
-                "end_date": "1990-06-17"
-            }
-        ]
-    },
-    "COS": {
-        "latitude": 38.8058,
-        "longitude": -104.7006,
-        "date_ranges": [
-            {
-                "start_date": "1991-08-12",
-                "end_date": "1991-08-17"
-            }
-        ]
-    },
-    "CVG": {
-        "latitude": 39.0488,
-        "longitude": -84.6677,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "DAL": {
-        "latitude": 32.8471,
-        "longitude": -96.8518,
-        "date_ranges": [
-            {
-                "start_date": "2000-05-01",
-                "end_date": "2001-09-10"
+                "start_date": "1992-02-09",
+                "end_date": "1992-07-17"
             }
         ]
     },
@@ -244,38 +64,8 @@
         "longitude": -84.2194,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1988-05-30"
-            }
-        ]
-    },
-    "DEN": {
-        "latitude": 39.8561,
-        "longitude": -104.6737,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "DFW": {
-        "latitude": 32.8998,
-        "longitude": -97.0403,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "DTW": {
-        "latitude": 42.2124,
-        "longitude": -83.3534,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
+                "start_date": "1994-01-09",
+                "end_date": "1994-01-14"
             }
         ]
     },
@@ -284,88 +74,8 @@
         "longitude": -106.9177,
         "date_ranges": [
             {
-                "start_date": "1989-12-30",
-                "end_date": "1989-12-30"
-            }
-        ]
-    },
-    "ELP": {
-        "latitude": 31.8075,
-        "longitude": -106.3781,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "EUG": {
-        "latitude": 44.1246,
-        "longitude": -123.214,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "EWR": {
-        "latitude": 40.6925,
-        "longitude": -74.1687,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "FAT": {
-        "latitude": 36.7762,
-        "longitude": -119.7181,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1995-04-30"
-            }
-        ]
-    },
-    "FCA": {
-        "latitude": 48.3114,
-        "longitude": -114.2551,
-        "date_ranges": [
-            {
-                "start_date": "2008-06-14",
-                "end_date": "2008-06-14"
-            }
-        ]
-    },
-    "FLL": {
-        "latitude": 26.0726,
-        "longitude": -80.1527,
-        "date_ranges": [
-            {
-                "start_date": "1996-11-01",
-                "end_date": "1996-11-28"
-            }
-        ]
-    },
-    "GEG": {
-        "latitude": 47.6199,
-        "longitude": -117.5338,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "GJT": {
-        "latitude": 39.1224,
-        "longitude": -108.5267,
-        "date_ranges": [
-            {
-                "start_date": "2008-02-03",
-                "end_date": "2008-02-03"
+                "start_date": "1991-01-05",
+                "end_date": "1991-01-05"
             }
         ]
     },
@@ -374,8 +84,8 @@
         "longitude": -107.2177,
         "date_ranges": [
             {
-                "start_date": "1987-12-18",
-                "end_date": "1987-12-20"
+                "start_date": "1991-01-11",
+                "end_date": "1991-01-13"
             }
         ]
     },
@@ -384,78 +94,8 @@
         "longitude": -95.2789,
         "date_ranges": [
             {
-                "start_date": "1988-07-17",
-                "end_date": "1989-09-06"
-            }
-        ]
-    },
-    "IAD": {
-        "latitude": 38.9531,
-        "longitude": -77.4565,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "IAH": {
-        "latitude": 29.9902,
-        "longitude": -95.3368,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "ICT": {
-        "latitude": 37.6499,
-        "longitude": -97.4331,
-        "date_ranges": [
-            {
-                "start_date": "2007-07-01",
-                "end_date": "2008-03-29"
-            }
-        ]
-    },
-    "IND": {
-        "latitude": 39.7173,
-        "longitude": -86.2944,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1995-11-23"
-            }
-        ]
-    },
-    "IPL": {
-        "latitude": 32.8342,
-        "longitude": -115.5792,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2007-11-22"
-            }
-        ]
-    },
-    "ITO": {
-        "latitude": 19.7203,
-        "longitude": -155.0485,
-        "date_ranges": [
-            {
-                "start_date": "2006-04-28",
-                "end_date": "2006-11-02"
-            }
-        ]
-    },
-    "IYK": {
-        "latitude": 35.658,
-        "longitude": -117.8291,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2008-07-08"
+                "start_date": "1990-11-24",
+                "end_date": "1990-11-27"
             }
         ]
     },
@@ -464,8 +104,8 @@
         "longitude": -110.737,
         "date_ranges": [
             {
-                "start_date": "1998-12-26",
-                "end_date": "1998-12-26"
+                "start_date": "2000-01-29",
+                "end_date": "2000-01-29"
             }
         ]
     },
@@ -474,8 +114,8 @@
         "longitude": -81.6879,
         "date_ranges": [
             {
-                "start_date": "2005-02-07",
-                "end_date": "2005-02-07"
+                "start_date": "2007-02-22",
+                "end_date": "2007-02-24"
             }
         ]
     },
@@ -484,18 +124,8 @@
         "longitude": -156.0456,
         "date_ranges": [
             {
-                "start_date": "1987-11-16",
-                "end_date": "1988-02-05"
-            }
-        ]
-    },
-    "LAS": {
-        "latitude": 36.0801,
-        "longitude": -115.1522,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
+                "start_date": "1989-04-21",
+                "end_date": "1989-05-08"
             }
         ]
     },
@@ -504,48 +134,8 @@
         "longitude": -73.874,
         "date_ranges": [
             {
-                "start_date": "2004-01-17",
-                "end_date": "2004-01-17"
-            }
-        ]
-    },
-    "LGB": {
-        "latitude": 33.817,
-        "longitude": -118.1516,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1994-06-05"
-            }
-        ]
-    },
-    "LIH": {
-        "latitude": 21.975,
-        "longitude": -159.3385,
-        "date_ranges": [
-            {
-                "start_date": "1998-06-10",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "LMT": {
-        "latitude": 42.1561,
-        "longitude": -121.7336,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-11"
-            }
-        ]
-    },
-    "MAF": {
-        "latitude": 31.9425,
-        "longitude": -102.2025,
-        "date_ranges": [
-            {
-                "start_date": "1992-12-28",
-                "end_date": "1992-12-28"
+                "start_date": "2004-05-15",
+                "end_date": "2004-05-15"
             }
         ]
     },
@@ -554,38 +144,8 @@
         "longitude": -94.7139,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1988-08-30"
-            }
-        ]
-    },
-    "MCO": {
-        "latitude": 28.4312,
-        "longitude": -81.3081,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1987-11-09"
-            }
-        ]
-    },
-    "MDW": {
-        "latitude": 41.7868,
-        "longitude": -87.7522,
-        "date_ranges": [
-            {
-                "start_date": "1991-01-01",
-                "end_date": "1991-10-31"
-            }
-        ]
-    },
-    "MEM": {
-        "latitude": 35.0424,
-        "longitude": -89.9767,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
+                "start_date": "1997-05-18",
+                "end_date": "1997-05-23"
             }
         ]
     },
@@ -594,28 +154,8 @@
         "longitude": -98.2386,
         "date_ranges": [
             {
-                "start_date": "2006-11-25",
-                "end_date": "2006-11-27"
-            }
-        ]
-    },
-    "MFR": {
-        "latitude": 42.3742,
-        "longitude": -122.8735,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-07-08"
-            }
-        ]
-    },
-    "MIA": {
-        "latitude": 25.7959,
-        "longitude": -80.287,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
+                "start_date": "2007-10-28",
+                "end_date": "2007-10-29"
             }
         ]
     },
@@ -624,58 +164,8 @@
         "longitude": -87.8966,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-03"
-            }
-        ]
-    },
-    "MOD": {
-        "latitude": 37.6258,
-        "longitude": -120.9545,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2003-10-13"
-            }
-        ]
-    },
-    "MRY": {
-        "latitude": 36.587,
-        "longitude": -121.8435,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2000-06-19"
-            }
-        ]
-    },
-    "MSO": {
-        "latitude": 46.9163,
-        "longitude": -114.0919,
-        "date_ranges": [
-            {
-                "start_date": "2008-06-15",
-                "end_date": "2008-06-15"
-            }
-        ]
-    },
-    "MSP": {
-        "latitude": 44.8848,
-        "longitude": -93.2223,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "MSY": {
-        "latitude": 29.9934,
-        "longitude": -90.258,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2005-09-06"
+                "start_date": "1988-05-02",
+                "end_date": "1988-05-06"
             }
         ]
     },
@@ -684,8 +174,8 @@
         "longitude": -107.8938,
         "date_ranges": [
             {
-                "start_date": "1994-12-24",
-                "end_date": "1994-12-24"
+                "start_date": "2005-01-20",
+                "end_date": "2005-01-23"
             }
         ]
     },
@@ -694,88 +184,8 @@
         "longitude": -97.6008,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-03"
-            }
-        ]
-    },
-    "OMA": {
-        "latitude": 41.2996,
-        "longitude": -95.8999,
-        "date_ranges": [
-            {
-                "start_date": "2007-05-21",
-                "end_date": "2008-01-04"
-            }
-        ]
-    },
-    "ONT": {
-        "latitude": 34.056,
-        "longitude": -117.6012,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "ORD": {
-        "latitude": 41.9742,
-        "longitude": -87.9073,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "OTH": {
-        "latitude": 43.4171,
-        "longitude": -124.246,
-        "date_ranges": [
-            {
-                "start_date": "2008-07-07",
-                "end_date": "2008-07-08"
-            }
-        ]
-    },
-    "OXR": {
-        "latitude": 34.2006,
-        "longitude": -119.207,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2003-10-28"
-            }
-        ]
-    },
-    "PDX": {
-        "latitude": 45.5898,
-        "longitude": -122.5951,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "PHL": {
-        "latitude": 39.8744,
-        "longitude": -75.2424,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "PHX": {
-        "latitude": 33.4343,
-        "longitude": -112.0117,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
+                "start_date": "1987-12-26",
+                "end_date": "1987-12-26"
             }
         ]
     },
@@ -784,8 +194,8 @@
         "longitude": -82.6879,
         "date_ranges": [
             {
-                "start_date": "2003-02-07",
-                "end_date": "2003-05-24"
+                "start_date": "2004-04-22",
+                "end_date": "2004-04-26"
             }
         ]
     },
@@ -794,28 +204,8 @@
         "longitude": -80.2329,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "2005-05-28"
-            }
-        ]
-    },
-    "PMD": {
-        "latitude": 34.6294,
-        "longitude": -118.0847,
-        "date_ranges": [
-            {
-                "start_date": "2007-06-07",
-                "end_date": "2008-07-07"
-            }
-        ]
-    },
-    "PSC": {
-        "latitude": 46.2647,
-        "longitude": -119.119,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1988-01-25"
+                "start_date": "2006-06-04",
+                "end_date": "2006-06-09"
             }
         ]
     },
@@ -824,18 +214,8 @@
         "longitude": -116.5063,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-11"
-            }
-        ]
-    },
-    "RDD": {
-        "latitude": 40.509,
-        "longitude": -122.2924,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1988-01-05"
+                "start_date": "1992-08-18",
+                "end_date": "1992-09-06"
             }
         ]
     },
@@ -844,8 +224,8 @@
         "longitude": -121.1505,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-22"
+                "start_date": "1989-12-29",
+                "end_date": "1990-01-01"
             }
         ]
     },
@@ -854,68 +234,8 @@
         "longitude": -78.788,
         "date_ranges": [
             {
-                "start_date": "2006-06-08",
-                "end_date": "2006-06-09"
-            }
-        ]
-    },
-    "SAT": {
-        "latitude": 29.5337,
-        "longitude": -98.4698,
-        "date_ranges": [
-            {
-                "start_date": "1987-12-15",
-                "end_date": "1988-02-21"
-            }
-        ]
-    },
-    "SBP": {
-        "latitude": 35.236,
-        "longitude": -120.6413,
-        "date_ranges": [
-            {
-                "start_date": "2001-01-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SCK": {
-        "latitude": 37.8942,
-        "longitude": -121.237,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1990-11-22"
-            }
-        ]
-    },
-    "SDF": {
-        "latitude": 38.1744,
-        "longitude": -85.736,
-        "date_ranges": [
-            {
-                "start_date": "2007-05-06",
-                "end_date": "2007-05-06"
-            }
-        ]
-    },
-    "SEA": {
-        "latitude": 47.4502,
-        "longitude": -122.3088,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SGU": {
-        "latitude": 37.0364,
-        "longitude": -113.5103,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2004-07-26"
+                "start_date": "2006-10-01",
+                "end_date": "2006-10-06"
             }
         ]
     },
@@ -924,58 +244,8 @@
         "longitude": -66.0018,
         "date_ranges": [
             {
-                "start_date": "1989-07-01",
-                "end_date": "1989-07-02"
-            }
-        ]
-    },
-    "SLC": {
-        "latitude": 40.7899,
-        "longitude": -111.9791,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SMF": {
-        "latitude": 38.6951,
-        "longitude": -121.5901,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SMX": {
-        "latitude": 34.8989,
-        "longitude": -120.4575,
-        "date_ranges": [
-            {
-                "start_date": "2008-07-10",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SNA": {
-        "latitude": 33.6757,
-        "longitude": -117.8677,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SUN": {
-        "latitude": 43.5047,
-        "longitude": -114.2954,
-        "date_ranges": [
-            {
-                "start_date": "1989-12-16",
-                "end_date": "1989-12-16"
+                "start_date": "1989-11-04",
+                "end_date": "1989-11-06"
             }
         ]
     },
@@ -984,58 +254,8 @@
         "longitude": -82.5332,
         "date_ranges": [
             {
-                "start_date": "1987-10-01",
-                "end_date": "1987-10-02"
-            }
-        ]
-    },
-    "TUL": {
-        "latitude": 36.1984,
-        "longitude": -95.8881,
-        "date_ranges": [
-            {
-                "start_date": "2007-05-21",
-                "end_date": "2008-02-02"
-            }
-        ]
-    },
-    "TUS": {
-        "latitude": 32.1161,
-        "longitude": -110.941,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "TVL": {
-        "latitude": 38.8939,
-        "longitude": -119.9958,
-        "date_ranges": [
-            {
-                "start_date": "1987-10-01",
-                "end_date": "1988-12-04"
-            }
-        ]
-    },
-    "TWF": {
-        "latitude": 42.4818,
-        "longitude": -114.4877,
-        "date_ranges": [
-            {
-                "start_date": "1994-12-17",
-                "end_date": "1994-12-17"
-            }
-        ]
-    },
-    "VIS": {
-        "latitude": 36.3184,
-        "longitude": -119.3928,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2003-03-31"
+                "start_date": "1988-01-10",
+                "end_date": "1988-01-15"
             }
         ]
     },
@@ -1044,78 +264,8 @@
         "longitude": -94.3068,
         "date_ranges": [
             {
-                "start_date": "2003-08-05",
-                "end_date": "2003-08-08"
-            }
-        ]
-    },
-    "YKM": {
-        "latitude": 46.5682,
-        "longitude": -120.5443,
-        "date_ranges": [
-            {
-                "start_date": "1988-12-17",
-                "end_date": "1988-12-17"
-            }
-        ]
-    },
-    "YUM": {
-        "latitude": 32.6566,
-        "longitude": -114.6059,
-        "date_ranges": [
-            {
-                "start_date": "2003-01-01",
-                "end_date": "2008-07-08"
-            }
-        ]
-    },
-    "LAX": {
-        "latitude": 33.9416,
-        "longitude": -118.4085,
-        "date_ranges": [
-            {
-                "start_date": "1987-01-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SFO": {
-        "latitude": 37.6213,
-        "longitude": -122.379,
-        "date_ranges": [
-            {
-                "start_date": "1987-01-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SAN": {
-        "latitude": 32.7338,
-        "longitude": -117.1933,
-        "date_ranges": [
-            {
-                "start_date": "1987-01-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "OAK": {
-        "latitude": 37.7213,
-        "longitude": -122.221,
-        "date_ranges": [
-            {
-                "start_date": "1987-01-01",
-                "end_date": "2008-12-31"
-            }
-        ]
-    },
-    "SJC": {
-        "latitude": 37.3639,
-        "longitude": -121.929,
-        "date_ranges": [
-            {
-                "start_date": "1987-01-01",
-                "end_date": "2008-12-31"
+                "start_date": "2003-12-14",
+                "end_date": "2003-12-19"
             }
         ]
     }
