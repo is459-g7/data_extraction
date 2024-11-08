@@ -15,8 +15,7 @@ This project automates the extraction, transformation, and integration of weathe
 
 ### Data Files
 
-- **`latest_weather_data.csv`**: CSV containing structured weather data aligned with each flight’s date and time. Data includes temperature, humidity, precipitation, wind conditions, etc.
-- **`wea.csv`**: Intermediate or final CSV file containing weather data fetched from the weather API.
+- **`weather_data.csv`**: CSV containing structured weather data aligned with each flight’s date and time. Data includes temperature, humidity, precipitation, wind conditions, etc.
 
 ## Workflow
 
