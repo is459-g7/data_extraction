@@ -37,3 +37,8 @@ This project automates the extraction, transformation, and integration of weathe
 1. Make sure all dependencies are installed:
    ```bash
    pip install -r requirements.txt
+2. Run the auto runner
+   ```bash
+   python auto_runner.py
+
+   
