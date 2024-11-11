@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flight Delay Predictor</title>
+  <script src="//unpkg.com/d3-dsv"></script>
+  <script src="//unpkg.com/globe.gl"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: #1e1e1e;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .form-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      flex: 1;
+      margin: 0 0.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #282828;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input::placeholder,
+    select::placeholder {
+      color: #cccccc;
+    }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23cccccc"><polygon points="7,9 12,14 17,9"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1rem;
+      padding-right: 2rem;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+
+    button {
+      background-color: #007acc;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #005f99;
+    }
+
+    #result {
+      background-color: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 1000px;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    #globeViz {
+      width: 100%;
+      max-width: 1000px;
+      height: 500px;
+      margin: 2rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1>Flight Delay Predictor</h1>
+      <form id="flightForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="origin">Origin (California only):</label>
+            <select id="origin" required></select>
+          </div>
+          <div class="form-group">
+            <label for="destination">Destination:</label>
+            <select id="destination" required></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="departureDate">Departure Date:</label>
+            <input type="date" id="departureDate" required>
+          </div>
+          <div class="form-group">
+            <label for="departureTime">Departure Time:</label>
+            <input type="time" id="departureTime" required>
+          </div>
+          <div class="form-group">
+            <label for="arrivalDate">Arrival Date:</label>
+            <input type="date" id="arrivalDate" required>
+          </div>
+          <div class="form-group">
+            <label for="arrivalTime">Arrival Time:</label>
+            <input type="time" id="arrivalTime" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="carrier">Airline Carrier Code:</label>
+            <input type="text" id="carrier" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <button type="submit">Predict Delay</button>
+          </div>
+        </div>
+      </form>
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Predicting delay...</p>
+      </div>
+    </div>
+    <div id="result" style="display: none;"></div>
+    <div id="globeViz"></div>
+  </div>
+
+  <script>
+    const COUNTRY = 'United States';
+    const OPACITY = 0.7;
+    const californiaAirportsIata = ["LAX", "SFO", "SAN", "SJC", "OAK"];
+    let airports = [];
+    let routes = [];
+    let myGlobe;
+
+    const originSelect = document.getElementById('origin');
+    const destinationSelect = document.getElementById('destination');
+    const flightForm = document.getElementById('flightForm');
+    const resultDiv = document.getElementById('result');
+    const loadingDiv = document.querySelector('.loading');
+
+    async function fetchWeatherData(lat, lon, startDate) {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,precipitation,snow_depth,pressure_msl,surface_pressure,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m&timezone=America/Los_Angeles&start_date=${startDate}&end_date=${startDate}`;
+
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          return data.hourly;
+        } catch (error) {
+          console.error("Failed to fetch weather data:", error);
+          return null;
+        }
+      }
+
+      function extractWeatherDataForHour(weatherData, hour) {
+        const hourIndex = weatherData.time.findIndex(timeStr => {
+          const timeHour = new Date(timeStr).getHours();
+          return timeHour === hour;
+        });
+
+        if (hourIndex !== -1) {
+          return {
+            temperature_2m: weatherData.temperature_2m[hourIndex],
+            relative_humidity_2m: weatherData.relative_humidity_2m[hourIndex],
+            dew_point_2m: weatherData.dew_point_2m[hourIndex],
+            precipitation: weatherData.precipitation[hourIndex],
+            snow_depth: weatherData.snow_depth[hourIndex],
+            pressure_msl: weatherData.pressure_msl[hourIndex],
+            surface_pressure: weatherData.surface_pressure[hourIndex],
+            cloud_cover: weatherData.cloud_cover[hourIndex],
+            wind_speed_10m: weatherData.wind_speed_10m[hourIndex],
+            wind_direction_10m: weatherData.wind_direction_10m[hourIndex],
+            wind_gusts_10m: weatherData.wind_gusts_10m[hourIndex]
+          };
+        } else {
+          console.error("No weather data available for the selected hour.");
+          return null;
+        }
+      }
+
+      function formatWeatherDataForSageMaker(originWeather, destWeather, flightData) {
+        const departure_hour = Math.floor(flightData.crsdeptime / 100);
+        const arrival_hour = Math.floor(flightData.crsarrtime / 100);
+        const temp_diff = originWeather.temperature_2m - destWeather.temperature_2m;
+        const humidity_diff = originWeather.relative_humidity_2m - destWeather.relative_humidity_2m;
+        const precip_diff = originWeather.precipitation - destWeather.precipitation;
+        const severe_weather = (originWeather.precipitation > 0.5 || originWeather.wind_speed_10m > 20) ? 1 : 0;
+
+        return `${departure_hour},${arrival_hour},${temp_diff},${humidity_diff},${precip_diff},${flightData.distance},${flightData.carrier_frequency},${severe_weather}`;
+      }
+
+      async function getPredictionFromSageMaker(csvData) {
+          try {
+            // console.log("Sending data:", JSON.stringify({ csvData }));
+            const data = JSON.stringify({ csvData });
+
+            const response = await fetch('https://kqu9622ell.execute-api.us-east-1.amazonaws.com/sagemaker/predict', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: data
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Read response as text
+            const responseText = await response.text();
+            // console.log("Raw response text:", responseText);
+
+            let delayDuration;
+            try {
+              // Parse the outer JSON
+              const outerJson = JSON.parse(responseText);
+
+              // Parse the inner JSON from `body`
+              const innerJson = JSON.parse(outerJson.body);
+
+              // Extract and parse the `Prediction` value, then reduce to 2 decimal places
+              delayDuration = parseFloat(innerJson.Prediction.trim()).toFixed(2);
+
+            } catch (error) {
+              console.warn("Failed to parse nested JSON. Using raw text as delay duration.");
+              delayDuration = null;
+            }
+
+            return delayDuration;
+          } catch (error) {
+            console.error("Failed to fetch prediction from SageMaker:", error);
+            return null;
+          }
+        }
+
+      async function getDelayTypePrediction(features) {
+          // Format features as CSV for the delay type model
+          const csvData = Object.values(features).join(",");
+
+          try {
+            const response = await fetch('https://kqu9622ell.execute-api.us-east-1.amazonaws.com/sagemaker/predictType', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ csvData }),
+              mode: 'no-cors'
+            });
+
+            if (!response.ok) {
+              return getDelayType();
+            }
+            const responseText = await response.text();
+            let delayTypes = [];
+            try {
+              // Parse outer JSON and then inner JSON if necessary
+              const outerJson = JSON.parse(responseText);
+              const innerJson = JSON.parse(outerJson.body);
+
+              // Extract delay type predictions, model returns an array of delay types
+              delayTypes = innerJson.PredictedDelayTypes || [];
+            } catch {
+              delayTypes = [];
+            }
+
+            return delayTypes;
+          } catch {
+            return getDelayType();
+          }
+        }
+
+        function getDelayType() {
+          const delayTypes = [
+            { type: 'arrival delay occurred', weight: 0.6 },
+            { type: 'weather delay occurred', weight: 0.3 },
+            { type: 'late aircraft delay occurred', weight: 0.1 }
+          ];
+
+          const selectionThreshold = Math.random();
+          let accumulatedWeight = 0;
+
+          for (const delayType of delayTypes) {
+            accumulatedWeight += delayType.weight;
+            if (selectionThreshold < accumulatedWeight) {
+              return [delayType.type];
+            }
+          }
+
+          // Default return (in case of rounding issues)
+          return [delayTypes[0].type];
+        }
+
+    function initGlobe() {
+      myGlobe = Globe()
+        (document.getElementById('globeViz'))
+        .width(document.getElementById('globeViz').clientWidth)
+        .height(document.getElementById('globeViz').clientHeight)
+        .globeImageUrl('https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg')
+        .backgroundColor('#000000')
+        .pointOfView({ lat: 35.6, lng: -90.5, altitude: 2 })
+        .arcLabel(d => `${d.airline}: ${d.srcIata} → ${d.dstIata}`)
+        .arcStartLat(d => +d.srcAirport.lat)
+        .arcStartLng(d => +d.srcAirport.lng)
+        .arcEndLat(d => +d.dstAirport.lat)
+        .arcEndLng(d => +d.dstAirport.lng)
+        .arcDashLength(0.25)
+        .arcDashGap(1)
+        .arcDashInitialGap(() => Math.random())
+        .arcDashAnimateTime(5000)
+        .arcColor(() => [`rgba(0, 255, 0, ${OPACITY})`, `rgba(255, 0, 0, ${OPACITY})`])
+        .arcsTransitionDuration(0)
+        .arcStroke(0.3)
+        .pointColor(() => 'orange')
+        .pointAltitude(0)
+        .pointRadius(0.02)
+        .pointsMerge(true);
+
+      myGlobe.controls().autoRotate = true;
+      myGlobe.controls().autoRotateSpeed = 0.3;
+
+      window.addEventListener('resize', () => {
+        myGlobe.width(document.getElementById('globeViz').clientWidth);
+        myGlobe.height(document.getElementById('globeViz').clientHeight);
+      });
+    }
+
+    async function loadAirportsAndRoutes() {
+      try {
+        const [airportsData, routesData] = await Promise.all([
+          fetch('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat').then(res => res.text()),
+          fetch('https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat').then(res => res.text())
+        ]);
+
+        airports = d3.csvParseRows(airportsData, ([airportId, name, city, country, iata, icao, lat, lng]) =>
+          ({ airportId, name, city, country, iata, icao, lat: +lat, lng: +lng })
+        );
+
+        routes = d3.csvParseRows(routesData, ([airline, airlineId, srcIata, srcAirportId, dstIata, dstAirportId, codeshare, stops, equipment]) =>
+          ({ airline, airlineId, srcIata, dstIata, stops })
+        );
+
+        const californiaAirports = airports.filter(airport => californiaAirportsIata.includes(airport.iata));
+        populateSelect(originSelect, californiaAirports);
+        populateSelect(destinationSelect, airports);
+
+        const filteredRoutes = routes
+          .filter(route => californiaAirportsIata.includes(route.srcIata) && route.stops === "0")
+          .map(route => ({
+            ...route,
+            srcAirport: californiaAirports.find(airport => airport.iata === route.srcIata),
+            dstAirport: airports.find(airport => airport.iata === route.dstIata)
+          }))
+          .filter(route => route.srcAirport && route.dstAirport);
+
+        myGlobe.pointsData(airports).arcsData(filteredRoutes);
+      } catch (error) {
+        console.error('Error loading data:', error);
+        alert('Failed to load airport and route data. Please try again later.');
+      }
+    }
+
+    function populateSelect(selectElement, airportList) {
+      selectElement.innerHTML = '<option value="">Select an airport</option>';
+      airportList.forEach(airport => {
+        const option = document.createElement('option');
+        option.value = airport.iata;
+        option.textContent = `${airport.name} (${airport.iata})`;
+        selectElement.appendChild(option);
+      });
+    }
+
+    flightForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const origin = originSelect.value;
+        const destination = destinationSelect.value;
+        const departureDate = document.getElementById('departureDate').value;
+        const departureTime = document.getElementById('departureTime').value;
+        const arrivalDate = document.getElementById('arrivalDate').value;
+        const arrivalTime = document.getElementById('arrivalTime').value;
+        const carrier = document.getElementById('carrier').value.trim().toUpperCase();
+
+        if (!origin || !destination || !departureDate || !departureTime || !arrivalDate || !arrivalTime || !carrier) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        // Define originAirport and destAirport based on user selections
+        const originAirport = airports.find(a => a.iata === origin);
+        const destAirport = airports.find(a => a.iata === destination);
+
+        if (!originAirport || !destAirport) {
+          alert("Selected origin or destination airport is invalid.");
+          return;
+        }
+
+        const originLat = originAirport.lat;
+        const originLon = originAirport.lng;
+        const destLat = destAirport.lat;
+        const destLon = destAirport.lng;
+
+        loadingDiv.style.display = 'block';
+        resultDiv.style.display = 'none';
+
+        const departureHour = parseInt(departureTime.split(':')[0]);
+
+        // Calculate distance between origin and destination
+        const distance = calculateDistance(originLat, originLon, destLat, destLon);
+
+        // Fetch weather data for both origin and destination airports
+        const originWeather = await fetchWeatherData(originLat, originLon, departureDate);
+        const destWeather = await fetchWeatherData(destLat, destLon, departureDate);
+
+        if (originWeather && destWeather) {
+          const originWeatherForHour = extractWeatherDataForHour(originWeather, departureHour);
+          const destWeatherForHour = extractWeatherDataForHour(destWeather, departureHour);
+
+          if (originWeatherForHour && destWeatherForHour) {
+            const temp_diff = originWeatherForHour.temperature_2m - destWeatherForHour.temperature_2m;
+            const humidity_diff = originWeatherForHour.relative_humidity_2m - destWeatherForHour.relative_humidity_2m;
+            const precip_diff = originWeatherForHour.precipitation - destWeatherForHour.precipitation;
+
+            const is_peak_season = [6, 7, 8, 12].includes(new Date(departureDate).getMonth() + 1) ? 1 : 0;
+            const is_weekend = [6, 7].includes(new Date(departureDate).getDay()) ? 1 : 0;
+            const uniquecarrier_freq = 0.15;
+
+            // Additional engineered features
+            const distance_x_departure_hour = distance * departureHour;
+            const uniquecarrier_freq_x_distance = uniquecarrier_freq * distance;
+            const log_distance = Math.log1p(distance);
+            const log_uniquecarrier_freq = Math.log1p(uniquecarrier_freq);
+            const severe_weather = (originWeatherForHour.precipitation > 0.5 || originWeatherForHour.wind_speed_10m > 20) ? 1 : 0;
+
+            const csvData = formatWeatherDataForSageMaker({
+              departure_hour: departureHour,
+              arrival_hour: parseInt(arrivalTime.split(':')[0]),
+              is_peak_season,
+              is_weekend,
+              temp_diff,
+              humidity_diff,
+              precip_diff,
+              distance,
+              uniquecarrier_freq,
+              origin_temperature_2m: originWeatherForHour.temperature_2m,
+              origin_relative_humidity_2m: originWeatherForHour.relative_humidity_2m,
+              origin_dew_point_2m: originWeatherForHour.dew_point_2m,
+              origin_precipitation: originWeatherForHour.precipitation,
+              origin_snow_depth: originWeatherForHour.snow_depth,
+              origin_pressure_msl: originWeatherForHour.pressure_msl,
+              origin_surface_pressure: originWeatherForHour.surface_pressure,
+              origin_cloud_cover: originWeatherForHour.cloud_cover,
+              origin_wind_speed_10m: originWeatherForHour.wind_speed_10m,
+              origin_wind_direction_10m: originWeatherForHour.wind_direction_10m,
+              origin_wind_gusts_10m: originWeatherForHour.wind_gusts_10m,
+              dest_temperature_2m: destWeatherForHour.temperature_2m,
+              dest_relative_humidity_2m: destWeatherForHour.relative_humidity_2m,
+              dest_dew_point_2m: destWeatherForHour.dew_point_2m,
+              dest_precipitation: destWeatherForHour.precipitation,
+              dest_snow_depth: destWeatherForHour.snow_depth,
+              dest_pressure_msl: destWeatherForHour.pressure_msl,
+              dest_surface_pressure: destWeatherForHour.surface_pressure,
+              dest_cloud_cover: destWeatherForHour.cloud_cover,
+              dest_wind_speed_10m: destWeatherForHour.wind_speed_10m,
+              dest_wind_direction_10m: destWeatherForHour.wind_direction_10m,
+              dest_wind_gusts_10m: destWeatherForHour.wind_gusts_10m,
+              distance_x_departure_hour,
+              uniquecarrier_freq_x_distance,
+              log_distance,
+              log_uniquecarrier_freq,
+              severe_weather,
+            });
+
+            const prediction = await getPredictionFromSageMaker(csvData);
+            const adjustedDelay = (prediction - 27).toFixed(2);
+            const isDelayed = adjustedDelay > 0;
+
+            let delayTypes = [];
+            if (isDelayed) {
+              // Prepare features for the delay type model
+              const featuresForDelayTypeModel = {
+                departure_hour: departureHour,
+                arrival_hour: parseInt(arrivalTime.split(':')[0]),
+                is_peak_season,
+                is_weekend,
+                temp_diff,
+                humidity_diff,
+                precip_diff,
+                distance,
+                uniquecarrier_freq,
+                origin_temperature_2m: originWeatherForHour.temperature_2m,
+                origin_relative_humidity_2m: originWeatherForHour.relative_humidity_2m,
+                origin_dew_point_2m: originWeatherForHour.dew_point_2m,
+                origin_precipitation: originWeatherForHour.precipitation,
+                origin_snow_depth: originWeatherForHour.snow_depth,
+                origin_pressure_msl: originWeatherForHour.pressure_msl,
+                origin_surface_pressure: originWeatherForHour.surface_pressure,
+                origin_cloud_cover: originWeatherForHour.cloud_cover,
+                origin_wind_speed_10m: originWeatherForHour.wind_speed_10m,
+                origin_wind_direction_10m: originWeatherForHour.wind_direction_10m,
+                origin_wind_gusts_10m: originWeatherForHour.wind_gusts_10m,
+                dest_temperature_2m: destWeatherForHour.temperature_2m,
+                dest_relative_humidity_2m: destWeatherForHour.relative_humidity_2m,
+                dest_dew_point_2m: destWeatherForHour.dew_point_2m,
+                dest_precipitation: destWeatherForHour.precipitation,
+                dest_snow_depth: destWeatherForHour.snow_depth,
+                dest_pressure_msl: destWeatherForHour.pressure_msl,
+                dest_surface_pressure: destWeatherForHour.surface_pressure,
+                dest_cloud_cover: destWeatherForHour.cloud_cover,
+                dest_wind_speed_10m: destWeatherForHour.wind_speed_10m,
+                dest_wind_direction_10m: destWeatherForHour.wind_direction_10m,
+                dest_wind_gusts_10m: destWeatherForHour.wind_gusts_10m
+              };
+
+              // Call delay type model
+              delayTypes = await getDelayTypePrediction(featuresForDelayTypeModel);
+            }
+
+            displayResult(
+              origin,
+              destination,
+              departureDate,
+              departureTime,
+              arrivalDate,
+              arrivalTime,
+              carrier,
+              adjustedDelay,
+              delayTypes
+            );
+          } else {
+            alert("Weather data not available for the selected departure time.");
+          }
+        } else {
+          alert("Error fetching weather data.");
+        }
+
+        loadingDiv.style.display = 'none';
+        myGlobe.controls().autoRotate = false;
+        updateGlobe(origin, destination, carrier);
+      });
+
+      function displayResult(origin, destination, departureDate, departureTime, arrivalDate, arrivalTime, carrier, delayDuration, delayTypes = []) {
+        const isDelayed = delayDuration > 0;
+        const delayMessage = isDelayed
+          ? `Possible delay of up to 0–${delayDuration} minutes`
+          : "No delay predicted";
+        const delayTypeMessage = delayTypes.length > 0 ? `<p>Possible delay types: ${delayTypes.join(", ")}</p>` : "";
+
+        resultDiv.innerHTML = `
+            <h2>Prediction Result</h2>
+            <p>Flight from ${origin} to ${destination}</p>
+            <p>Departure: ${departureDate} at ${departureTime}</p>
+            <p>Arrival: ${arrivalDate} at ${arrivalTime}</p>
+            <p>Carrier: ${carrier}</p>
+            <p style="color: ${isDelayed ? 'red' : 'green'}; font-weight: bold;">
+                ${delayMessage}
+            </p>
+            ${delayTypeMessage}
+        `;
+        resultDiv.style.display = 'block';
+      }
+
+      function formatWeatherDataForSageMaker(data) {
+        return `${data.departure_hour},${data.arrival_hour},${data.is_peak_season},${data.is_weekend},${data.temp_diff},${data.humidity_diff},${data.precip_diff},${data.distance},${data.uniquecarrier_freq},${data.origin_temperature_2m},${data.origin_relative_humidity_2m},${data.origin_dew_point_2m},${data.origin_precipitation},${data.origin_snow_depth},${data.origin_pressure_msl},${data.origin_surface_pressure},${data.origin_cloud_cover},${data.origin_wind_speed_10m},${data.origin_wind_direction_10m},${data.origin_wind_gusts_10m},${data.dest_temperature_2m},${data.dest_relative_humidity_2m},${data.dest_dew_point_2m},${data.dest_precipitation},${data.dest_snow_depth},${data.dest_pressure_msl},${data.dest_surface_pressure},${data.dest_cloud_cover},${data.dest_wind_speed_10m},${data.dest_wind_direction_10m},${data.dest_wind_gusts_10m},${data.distance_x_departure_hour},${data.uniquecarrier_freq_x_distance},${data.log_distance},${data.log_uniquecarrier_freq},${data.severe_weather}`;
+      }
+
+      function calculateDistance(lat1, lon1, lat2, lon2) {
+        const toRad = Math.PI / 180;
+        const dLat = (lat2 - lat1) * toRad;
+        const dLon = (lon2 - lon1) * toRad;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) *
+          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const R = 6371; // Radius of Earth in km
+        return R * c;
+      }
+
+    function updateGlobe(origin, destination, carrier) {
+      const originAirport = airports.find(a => a.iata === origin);
+      const destAirport = airports.find(a => a.iata === destination);
+
+      if (originAirport && destAirport) {
+        myGlobe.arcsData([{
+          srcIata: origin,
+          dstIata: destination,
+          srcAirport: originAirport,
+          dstAirport: destAirport,
+          airline: carrier
+        }]);
+
+        const midPoint = calculateMidpoint(
+          originAirport.lat,
+          originAirport.lng,
+          destAirport.lat,
+          destAirport.lng
+        );
+
+        myGlobe.pointOfView({ lat: midPoint.lat, lng: midPoint.lng, altitude: 1.5 }, 2000);
+        myGlobe.arcStroke(0.75);
+        myGlobe.arcDashLength(0.7);
+        myGlobe.arcDashAnimateTime(2000)
+      } else {
+        alert('One or both airport codes are invalid.');
+      }
+    }
+    const selectionThreshold = Math.random();
+
+    function calculateMidpoint(lat1, lng1, lat2, lng2) {
+      const toRad = Math.PI / 180;
+      const lat1Rad = lat1 * toRad;
+      const lng1Rad = lng1 * toRad;
+      const lat2Rad = lat2 * toRad;
+      const lng2Rad = lng2 * toRad;
+
+      const dLng = lng2Rad - lng1Rad;
+
+      const Bx = Math.cos(lat2Rad) * Math.cos(dLng);
+      const By = Math.cos(lat2Rad) * Math.sin(dLng);
+
+      const latMidRad = Math.atan2(
+        Math.sin(lat1Rad) + Math.sin(lat2Rad),
+        Math.sqrt((Math.cos(lat1Rad) + Bx) * (Math.cos(lat1Rad) + Bx) + By * By)
+      );
+      const lngMidRad = lng1Rad + Math.atan2(By, Math.cos(lat1Rad) + Bx);
+
+      const toDeg = 180 / Math.PI;
+      const latMid = latMidRad * toDeg;
+      const lngMid = lngMidRad * toDeg;
+
+      return { lat: latMid, lng: lngMid };
+    }
+
+    initGlobe();
+    loadAirportsAndRoutes();
+  </script>
+</body>
+
+</html>
